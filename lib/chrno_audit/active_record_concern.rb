@@ -75,6 +75,8 @@ module ChrnoAudit
           self.logger.warn "Audit: no fields to audit" if self.auditable_fields.empty?
           self.logger.warn "Audit: no actions to audit" if self.auditable_actions.empty?
         end
+      rescue ActiveRecord::NoDatabaseError
+        # База ещё не создана, или не настроена. Ничего не делаем
       end
     end
   end
